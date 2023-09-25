@@ -118,8 +118,10 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 ## OUTPUT
- ![Screenshot (7)](https://github.com/devanandan07/Mobile-Application-Development/assets/145025017/30d045c5-1654-42d6-9987-bffe5892ed2e)
- ![Screenshot (8)](https://github.com/devanandan07/Mobile-Application-Development/assets/145025017/e2cd80f0-ad1d-4c7b-aae2-d1690371828b)
+ ![image](https://github.com/devanandan07/Mobile-Application-Development/assets/145025017/90c651b3-ec90-493d-a49e-5a86d4ee60da)
+ ![image](https://github.com/devanandan07/Mobile-Application-Development/assets/145025017/4da58329-7450-4c3f-a28e-7b9f1502a19e)
+
+
 
 
 
