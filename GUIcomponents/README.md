@@ -38,124 +38,91 @@ MainActivity.java
 ```xml
     
     <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto"
-      xmlns:tools="http://schemas.android.com/tools"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      tools:context=".MainActivity">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D1B6B6"
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/colbut"
+    <TextView
+        android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="120dp"
-        android:backgroundTint="#FFC107"
-        android:text="Change Color"
+        android:layout_marginTop="108dp"
+        android:text="Color Change on button click"
+        android:textColor="#FF1010"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/fonbut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="48dp"
-        android:backgroundTint="#FF5722"
-        android:text="Change Font"
+        android:id="@+id/bt1"
+        android:layout_width="158dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="332dp"
+        android:text="Color Changer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/colbut" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="152dp"
-        android:text="PRIME PLAYS"
-        android:textSize="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fonbut" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 ```        
 **MAINACTIVITY:**
 ```java    
-    package com.example.guicomps;
+    package com.example.exercise2;
 
-    import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-    import android.content.res.AssetManager;
-    import android.graphics.Color;
-    import android.graphics.Typeface;
-    import android.os.Bundle;
-    import android.view.View;
-    import android.widget.Button;
-    import android.widget.TextView;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-    import java.io.IOException;
-    import java.io.InputStream;
+public class MainActivity extends AppCompatActivity {
 
-    public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private TextView textView;
-    private Button colorButton;
-    private Button fontButton;
-
+    Button Color_Changer;
+    ConstraintLayout bg2;
+    TextView tv1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView = findViewById(R.id.textView);
-        colorButton = findViewById(R.id.colbut);
-        fontButton = findViewById(R.id.fonbut);
+        Color_Changer = findViewById(R.id.bt1);
+        bg2 = findViewById(R.id.bg);
+        tv1= findViewById(R.id.tv1);
 
-        colorButton.setOnClickListener(this);
-        fontButton.setOnClickListener(this);
-    }
+        Color_Changer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "button worked", Toast.LENGTH_SHORT).show();
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.colbut:
-                changeTextColor();
-                break;
-            case R.id.fonbut:
-                changeFont();
-                break;
-        }
-    }
+                bg2.setBackgroundColor(Color.BLACK);
+                tv1.setTextColor(Color.MAGENTA);
+                tv1.setText("color changed");
 
-    private void changeTextColor() {
-        int randomColor = generateRandomColor();
-        textView.setTextColor(randomColor);
-    }
+                tv1.setTextSize(30);
+            }
+        });
 
-    private void changeFont() {
-        Typeface newFont = Typeface.createFromAsset(getAssets(), "font/pacifico.ttf");
-        textView.setTypeface(newFont);
-    }
 
-    private int generateRandomColor() {
-        int red = (int) (Math.random() * 256);
-        int green = (int) (Math.random() * 256);
-        int blue = (int) (Math.random() * 256);
-        return Color.rgb(red, green, blue);
     }
-    }
-
+}
 ```
 ## OUTPUT
-   ![240196753-a9d93852-9167-4979-83bd-113e30a3de00](https://github.com/knight7080/Mobile-Application-Development/assets/88542035/15c3d055-81d9-4b44-8288-564fd9db294a)
-![240197186-0a2161d3-b710-4d9f-b68b-a6c6da46c6d4](https://github.com/knight7080/Mobile-Application-Development/assets/88542035/fd57f6f2-47b8-4179-9c7c-95f34b6278cd)
+ ![Screenshot (7)](https://github.com/devanandan07/Mobile-Application-Development/assets/145025017/30d045c5-1654-42d6-9987-bffe5892ed2e)
+ ![Screenshot (8)](https://github.com/devanandan07/Mobile-Application-Development/assets/145025017/e2cd80f0-ad1d-4c7b-aae2-d1690371828b)
 
-![240198282-b8b0f459-6f99-4f93-8eb6-7bb3bedea355](https://github.com/knight7080/Mobile-Application-Development/assets/88542035/a1f4b875-7f8a-4f00-8c0e-ade88f79de15)![240198349-d1c087eb-2ecd-4232-be79-060657466d7e](https://github.com/knight7080/Mobile-Application-Development/assets/88542035/672e8289-7ba3-4846-872f-945e709f738f)
 
-![240198494-f7cbe2f7-2997-4fe1-8584-8d205737c6d9](https://github.com/knight7080/Mobile-Application-Development/assets/88542035/f7f29bc8-7db2-42c8-86c5-7b8a83b61514)
 
-![240198641-f674f5b4-273d-44ba-aff0-dd5a79bf838c](https://github.com/knight7080/Mobile-Application-Development/assets/88542035/1abc074d-5704-43dd-8323-e61a11c6e076)
-![240198848-1f7b7c03-4498-4c5c-81d7-1a81ea59c420](https://github.com/knight7080/Mobile-Application-Development/assets/88542035/7436e103-de86-4c22-9136-907e7beaf8d5)
 
 
 
